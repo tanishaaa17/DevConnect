@@ -1,0 +1,27 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install backend dependencies
+      run: cd server && npm install
+
+    - name: Install frontend dependencies
+      run: cd client && npm install
+
+    - name: Run backend tests (dummy)
+      run: echo "No tests defined yet."
